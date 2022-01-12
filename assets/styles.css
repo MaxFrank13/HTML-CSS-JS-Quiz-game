@@ -1,3 +1,185 @@
+/*
+=============== 
+Default Styles
+===============
+*/
+
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+}
+
+:root {
+  /* colors */
+  --primary-100: #ccfbf4;
+  --primary-200: #99f7e9;
+  --primary-300: #66f3dd;
+  --primary-400: #33efd2;
+  --primary-500: #00ebc7;
+  --primary-600: #00bc9f;
+  --primary-700: #008d77;
+  --primary-800: #005e50;
+  --primary-900: #002f28;
+
+  --secondary-300: #ffaab8;
+  --secondary-400: #ff7f94;
+  --secondary-500: #ff5470;
+  --secondary-600: #bf3f54;
+  --secondary-700: #802a38;
+
+  --tertiary-400: #fde669;
+  --tertiary-500: #fde24f;
+  --tertiary-600: #d7c043;
+
+  --grey-100: #ccd3db;
+  --grey-200: #99a6b8;
+  --grey-300: #667a94;
+  --grey-400: #334d71;
+  --grey-500: #00214d;
+  --grey-600: #001a3e;
+  --grey-700: #00142e;
+  --grey-800: #000d1f;
+  --grey-900: #00070f;
+
+  --black: #000;
+  --white: #fff;
+
+  --backgroundColor: var(--grey-100);
+  --textColor: var(--grey-900);
+  --borderRadius: 0.25rem;
+  --letterSpacing: 1px;
+  --transition: 0.3s ease-in-out all;
+
+  --max-width: 1120px;
+  --fixed-width: 600px;
+  --gap: 0.85rem;
+
+  --shadow-1:0 1px 2px 0 rgba(0, 0, 0, 0.6);
+  --shadow-2:  0 4px 6px -2px rgba(0, 0, 0, 0.6);
+  --shadow-3: 0 10px 15px -3px rgba(0, 0, 0, 0.8);
+  --shadow-4: 0 20px 25px -5px rgba(0, 0, 0, 0.8);
+}
+
+body {
+  background: var(--primary-700);
+  color: var(--grey-900);
+}
+
+h1, 
+h2, 
+h3, 
+h4, 
+h5 {
+  font-weight: 400;
+}
+h1 {
+  font-size: 3.052rem;
+}
+h2 {
+    font-size: 2.441rem;
+}
+h3 {
+    font-size: 1.953rem;
+}
+h4 {
+    font-size: 1.563rem;
+}
+h5 {
+    font-size: 1.25rem;
+}
 .hide {
-  display: none;
+  visibility: hidden;
+}
+
+/*
+=============== 
+Main Styles
+===============
+*/
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--grey-100);
+  padding: 0.75rem 5rem;
+  gap: var(--gap);
+  box-shadow: 0px 10px 70px 5px var(--grey-900);
+  text-align: center;
+}
+
+header * {
+  font-weight: 700;
+}
+
+main {
+  padding: 3rem;
+}
+
+.interface-header {
+  border-radius: 1rem 2rem;
+  background: linear-gradient(var(--tertiary-400), var(--primary-700) 80%);
+}
+.scoreboard {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 2fr;
+  color: var(--primary-900);
+  font-size: 5rem;
+  justify-items: center;
+}
+.start,
+.highscore-toggle {
+  width: 100%;
+  padding: 1rem 1rem 1rem 2rem;
+  border-radius: 5rem 1rem 0.25rem 0.25rem;
+  border: none;
+  background: var(--tertiary-500);
+  box-shadow: inset 4px 0px 17px 7px var(--primary-900);
+  text-transform: capitalize;
+  font-size: 0.8rem;
+  color: var(--grey-900);
+}
+.score,
+.timer {
+  display: flex;
+  align-items: center;
+  gap: var(--gap);
+}
+.score::before {
+  content: "your score:";
+  font-size: 1rem;
+}
+.timer::before {
+  content: "time left:";
+  font-size: 1rem;
+}
+
+.interface-body {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.question-container {
+  width: 50vw;
+}
+
+@media screen and (min-width: 520px) {
+  .start,
+  .highscore-toggle {
+    font-size: 1.2rem;
+  }
+}
+
+@media screen and (min-width: 720px) {
+  .start,
+  .highscore-toggle {
+    font-size: 1.8rem;
+  }
 }

@@ -11,31 +11,33 @@
 
 <body>
   <header>
-    <h1>Test your knowledge and skills in Web Development!</h1>
-    <p>Let's get quizical!</p>
+    <h2>Test your knowledge of Web Development</h2>
+    <h5><em>Let's get quizzical!</em></h5>
   </header>
   <main>
-    <div class="scoreboard">
-      <button class="start">start</button>
-      <button class="reset">reset</button>
-      <button class="highscore-toggle">check out highscores</button>
-      <p class="score"></p>
-      <p class="timer"></p>
-    </div>
-    <div class="highscore-container hide">
-      <ol class="scores">
-      </ol>
-    </div>
-    <div class="question-container hide">
-      <h3 class="question"></h3>
-      <ol class="choices">
-        <li class="choice" data-letter="A"></li>
-        <li class="choice" data-letter="B"></li>
-        <li class="choice" data-letter="C"></li>
-        <li class="choice" data-letter="D"></li>
-      </ol>
-    </div>
-
+    <section class="interface-header">
+      <div class="scoreboard">
+        <button class="start">start</button>
+        <button class="highscore-toggle">check highscores</button>
+        <p class="score"></p>
+        <p class="timer"></p>
+      </div>
+    </section>
+    <section class="interface-body">
+      <div class="question-container hide">
+        <h3 class="question"></h3>
+        <ol class="choices">
+          <li class="choice" data-letter="A"></li>
+          <li class="choice" data-letter="B"></li>
+          <li class="choice" data-letter="C"></li>
+          <li class="choice" data-letter="D"></li>
+        </ol>
+      </div>
+      <div class="highscore-container hide">
+        <ol class="scores">
+        </ol>
+      </div>
+    </section>
   </main>
   <script src="app.js"></script>
 </body>
