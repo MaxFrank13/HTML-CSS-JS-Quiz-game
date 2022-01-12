@@ -12,6 +12,8 @@ const timer_p = document.querySelector(".timer");
 const highscores_div = document.querySelector(".highscore-container");
 const scoresList = document.querySelector(".scores");
 const savedScores = document.querySelectorAll(".entry");
+const modalOverlay = document.querySelector(".modal-overlay");
+const initialsInput = document.getElementById("initials");
 
 // **** Global Variables ****
 
@@ -80,7 +82,7 @@ let timeLeft = 10;
 
 // **** Event Listeners ****
 
-window.addEventListener("DOMContentLoaded", function() {
+window.addEventListener("DOMContentLoaded", function () {
   getLocalStorage();
   timer_p.textContent = timeLeft;
   score_p.textContent = score;
@@ -176,6 +178,7 @@ function resetVals() {
   score_p.textContent = score;
   timeLeft = 10;
   timer_p.textContent = timeLeft;
+  initials = "";
 }
 
 
@@ -204,11 +207,22 @@ function sortScores(record) {
 }
 
 function initialsPrompt() {
-  if (!initials) {
-    initials = prompt("Enter your initials");
-  } else if (!confirm("Use same initials?")) {
-    initials = prompt("enter new initials");
-  }
+  modalOverlay.classList.remove("hide");
+  window.addEventListener("keydown", function (e) {
+    if (e.key === "Enter" && !modalOverlay.classList.contains("hide")) {
+      initials = initialsInput.value;
+      let record = {
+        name: initials,
+        number: score
+      }
+      sortScores(record);
+      renderScores(highscoresArray);
+      setLocalStorage();
+      resetVals();
+      highscores_div.classList.remove("hide");
+      modalOverlay.classList.add("hide");
+    }
+  })
 }
 
 function setScores() {
@@ -218,14 +232,5 @@ function setScores() {
   score_p.textContent = score;
   setTimeout(function () {
     initialsPrompt();
-    let record = {
-      name: initials,
-      number: score
-    }
-    sortScores(record);
-    renderScores(highscoresArray);
-    setLocalStorage();
-    resetVals();
-    highscores_div.classList.remove("hide");
   }, 500);
 }
