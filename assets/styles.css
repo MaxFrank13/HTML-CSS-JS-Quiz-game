@@ -74,7 +74,8 @@ html {
 }
 
 body {
-  background: var(--primary-700);
+  height: 100vh;
+  background: #61978e;
   color: var(--grey-900);
   font-family: var(--ff-primary);
 }
@@ -144,10 +145,10 @@ header * {
   font-size: 5rem;
 }
 .start,
-.highscore-toggle {
+.highscore-toggle{
   width: 100%;
   padding: 1rem 1rem 1rem 2rem;
-  background: var(--primary-600);
+  background: var(--primary-500);
   color: var(--grey-900);
   border-radius: 5rem 1rem 0.25rem 0.25rem;
   border: none;
@@ -155,10 +156,12 @@ header * {
   text-transform: capitalize;
   font-size: 0.8rem;
   transition: var(--transition);
+  font-weight: 700;
 }
 .start:hover,
 .highscore-toggle:hover {
-  background: var(--primary-500);
+  background: var(--primary-800);
+  color: var(--primary-100);
 }
 .start:active,
 .highscore-toggle:active {
@@ -227,6 +230,7 @@ header * {
   color: var(--primary-100);
   transition: var(--transition);
   transform: scale(1.5);
+  padding-left: 3rem;
 }
 .highscore-container {
   background: var(--backgroundGradient);
@@ -260,10 +264,14 @@ header * {
 .initials-prompt {
   display: grid;
   place-items: center;
-  position: relative;
-  background: var(--primary-400);
-  max-width: 600px;
   text-align: center;
+  padding: 1rem;
+  background: var(--primary-600);
+  color: var(--grey-600);
+  border-radius: 5rem 1rem 0.25rem 0.25rem;
+  border: none;
+  box-shadow: var(--clay-shadow);
+  font-weight: 600;
 }
 .hide {
   display: none;

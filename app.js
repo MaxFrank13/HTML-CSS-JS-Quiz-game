@@ -59,7 +59,7 @@ const questions = [
     answer: "A"
   },
   {
-    question: "What syntax is used to declare a variable and set it to an empty array in JavaScript?",
+    question: "How would you declare a variable and set it to an empty array in JavaScript?",
     choices: [
       "var = {}",
       "{}",
@@ -67,6 +67,56 @@ const questions = [
       "var[]"
     ],
     answer: "C"
+  },
+  {
+    question: "If an array's length is 6, what is the highest index of that array?",
+    choices: [
+      "10",
+      "12",
+      "6",
+      "5"
+    ],
+    answer: "D"
+  },
+  {
+    question: "You can use _______ and _______ to select elements via JavaScript.",
+    choices: [
+      "getElement, querySelection",
+      "itemGrab, extractHere",
+      "getElementById, querySelector",
+      "querySelector, getId"
+    ],
+    answer: "C"
+  },
+  {
+    question: "______ is the distance between an element's border and the content inside of it.",
+    choices: [
+      "padding",
+      "margin-right",
+      "flex",
+      "space-around"
+    ],
+    answer: "A"
+  },
+  {
+    question: "HTML elements can be created in JavaScript using which method?",
+    choices: [
+      "appendChild",
+      "createElement",
+      "classCreation",
+      "append"
+    ],
+    answer: "B"
+  },
+  {
+    question: "What is the default direction when an element's style is set to display:flex?",
+    choices: [
+      "row",
+      "left-to-right",
+      "x-axis",
+      "column"
+    ],
+    answer: "A"
   }
 ]
 let count = 0;
@@ -78,7 +128,7 @@ let highscoresArray = [];
 // **** Timer ****
 
 let timerId;
-let timeLeft = 10;
+let timeLeft = 60;
 
 // **** Event Listeners ****
 
@@ -102,10 +152,6 @@ startBtn.addEventListener("click", function (e) {
   }, 1000)
 })
 
-// resetBtn.addEventListener("click", function () {
-//   resetQuiz();
-// })
-
 highscoreBtn.addEventListener("click", function () {
   highscores_div.classList.toggle("hide");
 })
@@ -114,12 +160,31 @@ highscoreBtn.addEventListener("click", function () {
 
 choices_list.addEventListener("click", function (e) {
   userChoice = e.target.dataset.letter;
+  console.log(userChoice);
   checkAnswer();
   if (count === questions.length - 1) {
     setScores();
-  } else {
+  } else if (userChoice !== undefined) {
     count++;
     setQuestion();
+  }
+})
+
+// Initials input
+
+window.addEventListener("keydown", function (e) {
+  if (e.key === "Enter" && !modalOverlay.classList.contains("hide")) {
+    initials = initialsInput.value;
+    let record = {
+      name: initials,
+      number: score
+    }
+    sortScores(record);
+    renderScores(highscoresArray);
+    setLocalStorage();
+    resetVals();
+    highscores_div.classList.remove("hide");
+    modalOverlay.classList.add("hide");
   }
 })
 
@@ -152,13 +217,13 @@ function setQuestion() {
 }
 
 function checkAnswer() {
+  
   if (userChoice === questions[count].answer) {
     console.log("correct!");
     score += 5;
     timeLeft++;
-  } else {
+  } else if (userChoice !== undefined) {
     console.log("incorrect!");
-    timeLeft--;
     score--;
   }
 }
@@ -176,7 +241,7 @@ function resetVals() {
   userChoice;
   score = 0;
   score_p.textContent = score;
-  timeLeft = 10;
+  timeLeft = 60;
   timer_p.textContent = timeLeft;
   initials = "";
 }
@@ -194,11 +259,7 @@ function renderScores(object) {
 }
 
 function sortScores(record) {
-  if (highscoresArray.length === 0) {
-    return highscoresArray.push(record);
-  }
-  const arrayLength = highscoresArray.length;
-  for (let i = 0; i < arrayLength; i++) {
+  for (let i = 0; i < highscoresArray.length; i++) {
     if (record.number > highscoresArray[i].number) {
       return highscoresArray.splice(i, 0, record);
     }
@@ -208,27 +269,12 @@ function sortScores(record) {
 
 function initialsPrompt() {
   modalOverlay.classList.remove("hide");
-  window.addEventListener("keydown", function (e) {
-    if (e.key === "Enter" && !modalOverlay.classList.contains("hide")) {
-      initials = initialsInput.value;
-      let record = {
-        name: initials,
-        number: score
-      }
-      sortScores(record);
-      renderScores(highscoresArray);
-      setLocalStorage();
-      resetVals();
-      highscores_div.classList.remove("hide");
-      modalOverlay.classList.add("hide");
-    }
-  })
 }
 
 function setScores() {
   clearInterval(timerId);
-  question_div.classList.add("hide")
-  score += timeLeft;
+  question_div.classList.add("hide");
+  score += Math.floor(timeLeft/2);
   score_p.textContent = score;
   setTimeout(function () {
     initialsPrompt();
