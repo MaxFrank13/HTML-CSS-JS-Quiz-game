@@ -5,7 +5,7 @@ const question_h3 = document.querySelector(".question")
 const choices_list = document.querySelector(".choices");
 const choice_items = document.querySelectorAll(".choice");
 const startBtn = document.querySelector(".start");
-// const resetBtn = document.querySelector(".reset");
+const clearBtn = document.querySelector(".clear");
 const highscoreBtn = document.querySelector(".highscore-toggle");
 const score_p = document.querySelector(".score");
 const timer_p = document.querySelector(".timer");
@@ -156,15 +156,18 @@ highscoreBtn.addEventListener("click", function () {
   highscores_div.classList.toggle("hide");
 })
 
+clearBtn.addEventListener("click", function() {
+  clearLocalStorage();
+})
+
 // Multiple choice questions
 
 choices_list.addEventListener("click", function (e) {
   userChoice = e.target.dataset.letter;
-  console.log(userChoice);
   checkAnswer();
   if (count === questions.length - 1) {
     setScores();
-  } else if (userChoice !== undefined) {
+  } else {
     count++;
     setQuestion();
   }
@@ -203,6 +206,8 @@ function getLocalStorage() {
 
 function clearLocalStorage() {
   localStorage.clear();
+  highscoresArray = [];
+  renderScores(highscoresArray);
 }
 
 // **** Functions ****
@@ -224,7 +229,8 @@ function checkAnswer() {
     timeLeft++;
   } else if (userChoice !== undefined) {
     console.log("incorrect!");
-    score--;
+    timeLeft -= 2;
+    score -= 5;
   }
 }
 

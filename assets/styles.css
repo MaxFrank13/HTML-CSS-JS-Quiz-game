@@ -144,8 +144,7 @@ header * {
   box-shadow: var(--clay-shadow);
   font-size: 5rem;
 }
-.start,
-.highscore-toggle{
+.btn {
   width: 100%;
   padding: 1rem 1rem 1rem 2rem;
   background: var(--primary-500);
@@ -158,13 +157,11 @@ header * {
   transition: var(--transition);
   font-weight: 700;
 }
-.start:hover,
-.highscore-toggle:hover {
+.btn:hover {
   background: var(--primary-800);
   color: var(--primary-100);
 }
-.start:active,
-.highscore-toggle:active {
+.btn:active {
   background: var(--primary-900);
   color: var(--primary-100);
 }
