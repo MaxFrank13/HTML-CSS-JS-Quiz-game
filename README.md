@@ -6,7 +6,7 @@ This is a multiple-choice quiz game focused on testing your skills in web develo
 
 [Quiz game](https://maxfrank13.github.io/HTML-CSS-JS-Quiz-game/)
 
-![Picture of Quiz Game](https://github.com/MaxFrank13/HTML-CSS-JS-Quiz-game/blob/main/assets/app-photo.PNG))
+![Picture of Quiz Game](https://github.com/MaxFrank13/HTML-CSS-JS-Quiz-game/blob/main/assets/app-photo.jpg)
 
 ## What's happening in the code 
 
