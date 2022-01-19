@@ -4,7 +4,7 @@
 
 This is a multiple-choice quiz game focused on testing your skills in web development. You are allotted 60 seconds to complete a set of 10 questions. You will lose points and time for answering incorrectly. Each correct answer earns 5 points and adds a second to the clock. Any time remaining at the end of the quiz is added on to your final score. Each score can be saved into a highscores interface that stores its data in your local storage. If you're embarrassed by your performance you can easily clear your scores with the click of a button!
 
-[Quiz game](https://maxfrank13.github.io/HTML-CSS-JS-Quiz-game/)
+[Quiz game](https://maxfrank13.github.io/Test-Your-Web-Dev-Skills-game/)
 
 ![Picture of Quiz Game](https://github.com/MaxFrank13/Test-Your-Web-Dev-Skills-game/blob/main/assets/app-photo.jpg)
 
